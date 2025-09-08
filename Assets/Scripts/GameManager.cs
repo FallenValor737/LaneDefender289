@@ -28,17 +28,19 @@ public class GameManager : MonoBehaviour
     public TMP_Text EndScoreText;
     public TMP_Text EndHighScoreText;
     public GameObject OverUI;
+    public bool GameInPlay;
 
     public int Score;
     public int HighScore;
     public int Lives;
     public int CurLives;
 
-    public bool SpawnEnemy;
+    public bool ManuallySpawnOneEnemy;
     public EnemySpawner SpawnerScript;
 
     private void Start()
     {
+        GameInPlay = true;
         Quit = Actions.currentActionMap.FindAction("Quit");
         Quit.started += Handle_QuitAction;
         Reset = Actions.currentActionMap.FindAction("Reset");
@@ -48,7 +50,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (SpawnEnemy)
+        if (ManuallySpawnOneEnemy)
         {
             SpawnerScript.SpawnEnemy();
         }
@@ -85,6 +87,7 @@ public class GameManager : MonoBehaviour
 
     public void LostGame()
     {
+        GameInPlay = false;
         SpawnerScript.StopAllCoroutines();
         for (int i = 0; i < Enemies.Count; i++)
         {

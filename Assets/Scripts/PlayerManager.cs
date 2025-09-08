@@ -92,4 +92,6 @@ public class PlayerManager : MonoBehaviour
         yield return new WaitForSeconds(0.35f);
         BarrelSmoke.SetActive(false);
     }
+
+
 }

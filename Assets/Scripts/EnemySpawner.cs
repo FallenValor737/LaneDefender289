@@ -18,10 +18,13 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemy()
     {
-        Manager.SpawnEnemy = false;
-        ChosenLine = Random.Range(0, 5);
-        EnemyType = Random.Range(0, 3);
-        Manager.Enemies.Add(Instantiate(EnemyTypes[EnemyType], Spawns[ChosenLine].transform.position, Quaternion.identity));
+        if (Manager.GameInPlay)
+        {
+            Manager.ManuallySpawnOneEnemy = false;
+            ChosenLine = Random.Range(0, 5);
+            EnemyType = Random.Range(0, 3);
+            Manager.Enemies.Add(Instantiate(EnemyTypes[EnemyType], Spawns[ChosenLine].transform.position, Quaternion.identity));
+        }
     }
 
     public IEnumerator SpawnEnemies()
