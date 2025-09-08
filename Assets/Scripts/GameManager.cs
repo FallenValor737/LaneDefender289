@@ -8,6 +8,8 @@ using NUnit.Framework;
 
 public class GameManager : MonoBehaviour
 {
+    //Had to change something for github :3
+
     public PlayerInput Actions;
     public GameObject player;
     public GameObject FastEnemyPrefab;
